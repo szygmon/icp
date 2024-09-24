@@ -1,28 +1,28 @@
-<script setup>
-import { ref } from 'vue';
-import { my_project_backend } from 'declarations/my_project_backend/index';
-let greeting = ref('');
-
-async function handleSubmit(e) {
-  e.preventDefault();
-  const target = e.target;
-  const name = target.querySelector('#name').value;
-  await my_project_backend.greet(name).then((response) => {
-    greeting.value = response;
-  });
-}
-</script>
-
 <template>
-  <main>
-    <img src="/logo2.svg" alt="DFINITY logo" />
-    <br />
-    <br />
-    <form action="#" @submit="handleSubmit">
-      <label for="name">Enter your name: &nbsp;</label>
-      <input id="name" alt="Name" type="text" />
-      <button type="submit">Click Me!</button>
-    </form>
-    <section id="greeting">{{ greeting }}</section>
-  </main>
+  <div id="app" class="app-container">
+    <Header />
+    <AboutYou />
+    <Projects />
+    <Skills />
+    <Contact />
+  </div>
 </template>
+
+<script>
+import Header from "./components/Header.vue";
+import AboutYou from "./components/aboutYou.vue";
+import Contact from "./components/Contact.vue";
+import Projects from "./components/Projects.vue";
+import Skills from "./components/Skills.vue";
+
+export default {
+  name: "App",
+  components: {
+    Header,
+    AboutYou,
+    Contact,
+    Projects,
+    Skills
+  },
+};
+</script>
